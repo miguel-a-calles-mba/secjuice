@@ -1,0 +1,33 @@
+service: simple
+
+frameworkVersion: ">=1.26.1"
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  product: myproduct
+  stage: dev
+  region: us-east-1
+
+  environment:
+    STATIC_KEY: mysecurekey
+
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - lambda:InvokeFunction
+      Resource: "*"
+
+functions:
+  authorizerStaticKey:
+    handler: authorizers/staticKeyAuthorizer/handler.index
+  helloWorld:
+    handler: functions/helloWorld/handler.index
+    events:
+      - http:
+          path: v1/helloWorld
+          method: get
+          authorizer:
+            name: authorizerStaticKey
+            resultTtlInSeconds: 0
+            identitySource: method.request.header.STATIC_KEY
