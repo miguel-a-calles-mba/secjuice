@@ -1,0 +1,35 @@
+service: secjuice-example-data
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: ${opt:stage, 'dev'}
+  region: us-east-1
+
+resources:
+  Resources:
+    S3BucketFiles:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: secjuice-example-files # must be globally unique across all AWS
+    CustomersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: secjuice-example-customers
+        AttributeDefinitions:
+          - AttributeName: AccountId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: AccountId
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+
+plugins:
+  - serverless-termination-protection
+
+custom:
+  serverlessTerminationProtection:
+    stages:
+      - prod
