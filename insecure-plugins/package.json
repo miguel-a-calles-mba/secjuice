@@ -1,0 +1,12 @@
+{
+  "name": "insecure-plugins",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Miguel A. Calles MBA <miguelacallesmba@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "serverless-plugin-ifelse": "^1.0.5"
+  }
+}
