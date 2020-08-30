@@ -12,3 +12,6 @@ Go to the `termination-protection-examples` folder for the examples used in this
 
 Go to the `insecure-plugins` folder for the examples used in this article.
 
+## [AWS CDK vs. Serverless Framework](https://www.secjuice.com/aws-cdk-vs-serverless-framework/)
+
+Go to the `cdk-vs-sls` folder for the examples used in this article.
