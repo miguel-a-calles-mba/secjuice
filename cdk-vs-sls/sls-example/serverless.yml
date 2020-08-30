@@ -120,6 +120,24 @@ functions:
 #    environment:
 #      variable2: value2
 
+# additions
+plugins:
+  - fullstack-serverless
+
+custom:
+  fullstack:
+    domain: my-custom-domain.com
+    certificate: arn:aws:acm:us-east-1:...
+    bucketName: my-website
+    distributionFolder: websiteDir/dist
+    indexDocument: index.html
+    errorDocument: error.html
+    singlePageApp: true
+    compressWebContent: true
+    clientCommand: npm run build
+    clientSrcPath: websiteDir
+# end additions
+
 # you can add CloudFormation resource templates here
 #resources:
 #  Resources:
